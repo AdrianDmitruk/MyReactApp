@@ -1,0 +1,20 @@
+@import "src/theme/variables";
+@import "src/theme/fonts";
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+
+  &Title {
+    cursor: pointer;
+    @include heading-md;
+    color: $blue-light;
+  }
+
+  &Text {
+    @include text-sm;
+    color: $gray-200;
+  }
+}

@@ -1,17 +1,59 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
+
+import styles from "./TaskBlock.module.scss";
 
 interface TaskBlockProps {
   title: string;
   text: string;
+  liFirst?: string;
+  liSecond?: string;
+  liThird?: string;
+  responseText?: string;
+  responseLiFirst?: string;
+  responseLiSecond?: string;
+  responseLiThird?: string;
+  children?: ReactNode;
 }
 
-export const TaskBlock: FC<TaskBlockProps> = (props) => {
-  const { title, text } = props;
-
+export const TaskBlock: FC<TaskBlockProps> = ({
+  title,
+  text,
+  liFirst,
+  liSecond,
+  liThird,
+  responseText,
+  responseLiFirst,
+  responseLiSecond,
+  responseLiThird,
+  children,
+}) => {
   return (
-    <>
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </>
+    <div className={styles.wrap}>
+      <h2 className={styles.wrapTitle}>{title}</h2>
+      <p className={styles.wrapText}>{text}</p>
+
+      <ul className={styles.wrapUl}>
+        {liFirst && <li>1. {liFirst}</li>}
+        {liSecond && <li>2. {liSecond}</li>}
+        {liThird && <li>3. {liThird}</li>}
+      </ul>
+
+      <div className={styles.wrapDecision}>
+        <h4 className={styles.wrapDecisionText}>Решение:</h4>
+        {responseText && (
+          <p className={styles.wrapResponseText}>{responseText}</p>
+        )}
+        {responseLiFirst && (
+          <p className={styles.wrapResponseText}>1. {responseLiFirst}</p>
+        )}
+        {responseLiSecond && (
+          <p className={styles.wrapResponseText}>2. {responseLiSecond}</p>
+        )}
+        {responseLiThird && (
+          <p className={styles.wrapResponseText}>3. {responseLiThird}</p>
+        )}
+        {children}
+      </div>
+    </div>
   );
 };

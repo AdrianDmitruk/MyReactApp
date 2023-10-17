@@ -1,0 +1,28 @@
+@import "src/theme/variables";
+@import "src/theme/fonts";
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  align-items: center;
+  gap: 10px;
+
+  &Title {
+    @include heading-md;
+    color: $blue-light;
+  }
+
+  &Btn {
+    display: flex;
+    gap: 10px;
+  }
+
+  &BtnItem {
+    padding: 5px;
+    @include text-md;
+    background: $gray-500;
+    border-radius: 5px;
+    color: $white;
+  }
+}
